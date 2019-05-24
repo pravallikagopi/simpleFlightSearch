@@ -1,0 +1,51 @@
+<div class="flight-search">
+  <div class="container">
+    <form class="searchForm" name="flightSearchForm" (ngSubmit)="onFlightSearch()" novalidate [formGroup]="flightSearchForm">
+        <div class="row">
+            <div class="col-sm-3 form-group">
+              <label for="flightNumber">Flight Number</label>
+              <input type="text" value="" name="flightNumber" formControlName="flightNumber" (change)="onFlightNumberChange()"/>
+            </div>
+            <div class="col-sm-3 form-group">
+              <label for="origin">Origin</label>
+              <input type="text" value="" name="origin" formControlName="origin" (change)="onPlaceChange()" />
+            </div>
+            <div class="col-sm-3 form-group">
+              <label>Destination</label>
+              <input type="text" value="" name="destination" formControlName="destination" (change)="onPlaceChange()"/>
+            </div>
+            <div class="col-sm-3 form-group">
+              <label>Departure</label>
+              <input type="datetime-local" value="" name="departure" step="1" formControlName="departure"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-dark" [disabled]="flightSearchForm.invalid">Search</button>
+            </div>
+          </div>
+    </form> 
+    <div class="results">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Flight Number</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Departure</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let flight of flights">
+            <td>{{flight.flightNumber}}</td>
+            <td>{{flight.origin}}</td>
+            <td>{{flight.destination}}</td>
+            <td>{{flight.departure}}</td>
+            <td>{{flight.status}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>  
+  </div>
+</div>
